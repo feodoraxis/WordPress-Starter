@@ -19,7 +19,7 @@ function get_picture_posts ( $post_id, $pic_size='thumbnail-size' ) {
     return wp_explode( wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), $pic_size, true )['0'] );
 }
   
-function get_taxonomy_posts ( $term_id, $pic_size='thumbnail-size' ) { 
+function get_picture_taxonomy ( $term_id, $pic_size='thumbnail-size' ) { 
     //For WooCommerce. Custom taxonomies haven't thumbnails
     return wp_explode( wp_get_attachment_image_src( get_woocommerce_term_meta( $term_id, 'thumbnail_id', true ), $pic_size, true )['0'] );
 }
