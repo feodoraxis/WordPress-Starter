@@ -1,6 +1,8 @@
 <?php
 if ( !defined('ABSPATH') ) die();
 
+add_theme_support( 'title-tag' );
+
 register_nav_menus( array(
     'main-menu' => esc_html__( 'Main menu' ),
 ) );
