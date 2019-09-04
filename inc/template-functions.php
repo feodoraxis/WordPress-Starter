@@ -26,7 +26,7 @@ function get_picture_taxonomy ( $term_id, $pic_size='thumbnail-size' ) {
   
 function plural_format_word($number, $after) {
     $cases = array (2, 0, 1, 1, 1, 2);
-    echo $number.' '.$after[ ($number%100>4 && $number%100<20)? 2: $cases[min($number%10, 5)] ];
+    return $number.' '.$after[ ($number%100>4 && $number%100<20)? 2: $cases[min($number%10, 5)] ];
 }
   
 function change_date_format($date, $date_format) {
@@ -35,7 +35,7 @@ function change_date_format($date, $date_format) {
      * $date_format - use needle format. You can use it like in function date()
     */
   
-    if ( empty($date) || !empty($date_format) ) return false;
+    if ( empty($date) || empty($date_format) ) return false;
 
     $_date = strtotime( $date );
     return date($date_format, $_date);
