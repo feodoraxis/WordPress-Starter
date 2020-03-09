@@ -1,9 +1,5 @@
 <?php
 if ( !defined('ABSPATH') ) die();
-
-function wp_explode( $link ) {
-    return explode($_SERVER['HTTP_HOST'], $link)['1'];
-}
   
 function d($arr) {
     echo '<pre>'; print_r($arr); echo"</pre>";
@@ -16,12 +12,16 @@ function debug($arr) {
 }
   
 function get_picture_posts ( $post_id, $pic_size='thumbnail-size' ) {
-    return wp_explode( wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), $pic_size, true )['0'] );
+    return wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), $pic_size, true )['0'];
+}
+
+function get_picture_by_id ( $pic_id, $pic_size='thumbnail-size' ) {
+    return wp_get_attachment_image_src( $pic_id, $pic_size, true )['0'];
 }
   
 function get_picture_taxonomy ( $term_id, $pic_size='thumbnail-size' ) { 
     //For WooCommerce. Custom taxonomies haven't thumbnails
-    return wp_explode( wp_get_attachment_image_src( get_woocommerce_term_meta( $term_id, 'thumbnail_id', true ), $pic_size, true )['0'] );
+    return wp_get_attachment_image_src( get_woocommerce_term_meta( $term_id, 'thumbnail_id', true ), $pic_size, true )['0'];
 }
   
 function plural_format_word($number, $after) {
