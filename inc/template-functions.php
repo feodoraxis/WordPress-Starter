@@ -18,6 +18,14 @@ function get_picture_posts ( $post_id, $pic_size='thumbnail-size' ) {
 function get_picture_by_id ( $pic_id, $pic_size='thumbnail-size' ) {
     return wp_get_attachment_image_src( $pic_id, $pic_size, true )['0'];
 }
+
+function get_pictures_alt_by_id( $attachment_id ) {
+    return get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+}
+
+function get_pictures_alt_by_post( $post_id ) {
+    return get_post_meta( get_post_thumbnail_id($post_id), '_wp_attachment_image_alt', true );
+}
   
 function get_picture_taxonomy ( $term_id, $pic_size='thumbnail-size' ) { 
     //For WooCommerce. Custom taxonomies haven't thumbnails
