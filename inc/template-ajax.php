@@ -14,7 +14,7 @@ function recall_back_form() {
         die();
     
     if ( !preg_match('/([\(]{1}[0-9]{3}[\)]{1}[ ]{1}[0-9]{3}[\-]{1}[0-9]{2}[\-]{1}[0-9]{2})/', substr($form_data["phone"], 3)) )
-        die('1');
+        die();
 
     $mail_theme = "Сообщение из формы обратной связи";
     $email_to = carbon_get_theme_option("option-email-recall");
