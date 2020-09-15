@@ -2,20 +2,19 @@
 if ( !defined('ABSPATH') ) die();
 
 add_theme_support( 'title-tag' );
+add_theme_support( 'post-thumbnails' );
+add_theme_support( 'search-form' );
+add_theme_support( 'gallery' );
+add_theme_support( 'caption' );
 
 register_nav_menus( array(
     'main-menu' => esc_html__( 'Main menu' ),
 ) );
 
-add_theme_support( 'html5', array(
-    'title-tag',
-    'post-thumbnails',
-    'search-form',
-    'gallery',
-    'caption',
-) );
-
-//WordPress-Starter - is dir-name of this starter. If you change dir name - you need change name here to. 
+/*
+ * WordPress-Starter - is dir-name of this starter. If you change dir name - you need change name here to. 
+ *
+ */
 load_theme_textdomain( 'WordPress-Starter', get_template_directory() . '/langs' );
 
 // function main_widgets_init() {
