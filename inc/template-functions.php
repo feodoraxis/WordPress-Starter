@@ -92,10 +92,10 @@ function create_message($title, $data) {
 
     $message .= "<tr><td bgcolor='#efeeee' style='background:#efeeee'>Дата:</td><td>$time</td></tr><tr><td bgcolor='#efeeee' style='background:#efeeee'>IP:</td><td>$_SERVER[REMOTE_ADDR]</td></tr>";
 
-    if (file_exists($_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/WordPress-Starter/inc/data/SxGeo.php')) {
-        include $_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/WordPress-Starter/inc/data/SxGeo.php';
+    if (file_exists(get_template_directory() . '/inc/data/SxGeo.php')) {
+        include get_template_directory() . '/inc/data/SxGeo.php';
 
-        $SxGeoCity = new SxGeo($_SERVER["DOCUMENT_ROOT"] . '/wp-content/themes/WordPress-Starter/inc/data/SxGeoCity.dat');
+        $SxGeoCity = new SxGeo(get_template_directory() . '/inc/data/SxGeoCity.dat');
         $ip = $_SERVER['REMOTE_ADDR'];
         $region = $SxGeoCity->getCityFull($ip);
         $regionCity = $region["city"]["name_ru"];
