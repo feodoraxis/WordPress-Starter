@@ -40,10 +40,10 @@ function recall_back_form() {
     $multipart = create_message($mail_theme, $params);
 
     if (mail($email_to, '=?UTF-8?B?' . base64_encode($mail_theme) . '?=', $multipart, $headers)) {
-        echo json_encode(Array('success' => 1, 'title' => "Спасибо!", 'message' => "Ожидайте нашего звонка"));
+        echo json_encode(Array('success' => 1, 'title' => "Спасибо!", 'text' => "Ожидайте нашего звонка"));
     }
     else {
-        echo json_encode(Array('success' => 0, 'text' => 'Не удалось отправить сообщение'));
+        echo json_encode(Array('success' => 0, 'title' => "Ошибка", 'text' => 'Не удалось отправить сообщение'));
     }
     
     exit;
