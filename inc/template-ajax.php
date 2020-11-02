@@ -35,7 +35,7 @@ function recall_back_form() {
     
     $headers = "MIME-Version: 1.0\r\n";
     $headers .= "Content-type: text/html; charset=utf-8\r\n";
-    $headers .= "From: boot@larkov.com\r\n";
+    $headers .= "From: boot@" . $_SERVER["HTTP_HOST"] . "\r\n";
 
     $multipart = create_message($mail_theme, $params);
 
