@@ -10,27 +10,37 @@ function debug($arr) {
     fwrite($f, print_r(array($arr),true));
     fclose($f);
 }
+
+/**
+ * Если нужна миниатюра записи с тегом <img> -- get_the_post_thumbnail( $id, $size, $attr )
+ * Если нужна только ссылка -- get_the_post_thumbnail_url( $post, $size );
+ **/
+
+/**
+ * Если нужен именно URL, то используем wp_get_attachment_image_url();
+ * Если нужен <img>, то используем wp_get_attachment_image( $attachment_id, $size, $icon, $attr );
+ **/
   
-function get_picture_posts ( $post_id, $pic_size='thumbnail-size' ) {
-    return wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), $pic_size, true )['0'];
-}
+//function get_picture_posts ( $post_id, $pic_size='thumbnail-size' ) {
+//    return wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), $pic_size, true )['0'];
+//}
 
-function get_picture_by_id ( $pic_id, $pic_size='thumbnail-size' ) {
-    return wp_get_attachment_image_src( $pic_id, $pic_size, true )['0'];
-}
+//function get_picture_by_id ( $pic_id, $pic_size='thumbnail-size' ) {
+//    return wp_get_attachment_image_src( $pic_id, $pic_size, true )['0'];
+//}
 
-function get_pictures_alt_by_id( $attachment_id ) {
-    return get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
-}
+//function get_pictures_alt_by_id( $attachment_id ) {
+//    return get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+//}
 
-function get_pictures_alt_by_post( $post_id ) {
-    return get_post_meta( get_post_thumbnail_id($post_id), '_wp_attachment_image_alt', true );
-}
+//function get_pictures_alt_by_post( $post_id ) {
+//    return get_post_meta( get_post_thumbnail_id($post_id), '_wp_attachment_image_alt', true );
+//}
   
-function get_picture_taxonomy ( $term_id, $pic_size='thumbnail-size' ) { 
+//function get_picture_taxonomy ( $term_id, $pic_size='thumbnail-size' ) { 
     //For WooCommerce. Custom taxonomies haven't thumbnails
-    return wp_get_attachment_image_src( get_woocommerce_term_meta( $term_id, 'thumbnail_id', true ), $pic_size, true )['0'];
-}
+//    return wp_get_attachment_image_src( get_woocommerce_term_meta( $term_id, 'thumbnail_id', true ), $pic_size, true )['0'];
+//}
   
 function plural_format_word($number, $after) {
     $cases = array (2, 0, 1, 1, 1, 2);
