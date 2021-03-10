@@ -27,7 +27,7 @@ function estyle( $files = Array() ) {
 	    $file['name'] . '-css', 
 	    $dir, 
 	    $was_files,
-	    $dir, 
+	    filemtime( __DIR__ . '/../' . $dir ), 
 	    $file['in_footer']
 	);
 	    
@@ -51,7 +51,7 @@ function escript( $files = Array() ) {
 	    $file['name'] . '-js', 
 	    $dir, 
 	    $was_files,
-	    $dir, 
+	    filemtime( __DIR__ . '/../' . $dir), 
 	    $file['in_footer']
 	);
 	    
