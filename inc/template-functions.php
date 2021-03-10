@@ -10,6 +10,54 @@ function debug($arr) {
     fwrite($f, print_r(array($arr),true));
     fclose($f);
 }
+
+function estyle( $files = Array() ) {
+    if ( !is_array($files) || empty($files) )
+        return false;
+	
+    $was_files = Array();
+	
+    foreach ( $files as $file ) {
+	if ( $file['no_in_theme'] == true )
+	    $dir = $file['dir'];
+	else
+	    $dir = get_template_directory_uri() . $file['dir'];
+	    
+    	wp_enqueue_style( 
+	    $file['name'] . '-css', 
+	    $dir, 
+	    $was_files,
+	    $dir, 
+	    $file['in_footer']
+	);
+	    
+	$was_files[] = $file['name'] . '-css';
+    }
+}
+
+function escript( $files = Array() ) {
+    if ( !is_array($files) || empty($files) )
+        return false;
+	
+    $was_files = Array();
+	
+    foreach ( $files as $file ) {
+	if ( $file['no_in_theme'] == true )
+	    $dir = $file['dir'];
+	else
+	    $dir = get_template_directory_uri() . $file['dir'];
+	    
+    	wp_enqueue_script( 
+	    $file['name'] . '-js', 
+	    $dir, 
+	    $was_files,
+	    $dir, 
+	    $file['in_footer']
+	);
+	    
+	$was_files[] = $file['name'] . '-js';
+    }
+}
   
 function plural_format_word($number, $after) {
     $cases = array (2, 0, 1, 1, 1, 2);
