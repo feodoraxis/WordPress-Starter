@@ -12,18 +12,21 @@ add_action( 'wp_enqueue_scripts', function () {
             'dir' => '/assets/css/all_libs.min.css',
             'no_in_theme' => false,
             'in_footer' => false,
+            'version' => '0.1',
         ),
         Array(
             'name' => 'main',
             'dir' => '/assets/css/main.css',
             'no_in_theme' => false,
             'in_footer' => false,
+            'version' => '0.1',
         ),
         Array(
             'name' => 'media',
             'dir' => '/assets/css/media.css',
             'no_in_theme' => false,
             'in_footer' => false,
+            'version' => '0.1',
         ),
     ]);
 });
@@ -37,12 +40,14 @@ add_action( 'wp_enqueue_scripts', function () {
             'dir' => '/assets/js/libs.min.css',
             'no_in_theme' => false,
             'in_footer' => true,
+            'version' => '0.1',
         ),
         Array(
             'name' => 'common',
             'dir' => '/assets/js/common.css',
             'no_in_theme' => false,
             'in_footer' => true,
+            'version' => '0.1',
         ),
     ]);
     //wp_enqueue_script( 'libs-js', get_template_directory_uri() . '/assets/js/libs.min.js', Array(),          '1.0', true );
