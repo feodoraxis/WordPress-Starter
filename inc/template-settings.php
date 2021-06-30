@@ -29,3 +29,4 @@ load_theme_textdomain( 'WordPress-Starter', get_template_directory() . '/langs' 
 //     ) );
 // }
 // add_action( 'widgets_init', 'main_widgets_init' );
+// add_image_size( 'auteurs-preview', 361, 260, true );
