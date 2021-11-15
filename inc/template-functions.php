@@ -1,83 +1,39 @@
 <?php
 if ( !defined('ABSPATH') ) die();
   
-function d($arr) {
+function d($arr) 
+{
     echo '<pre>'; print_r($arr); echo"</pre>";
 }
   
-function debug($arr) {
+function debug($arr)
+{
     $f = fopen($_SERVER["DOCUMENT_ROOT"]."/debug.txt", "a+");
     fwrite($f, print_r(array($arr),true));
     fclose($f);
 }
-
-function estyle( $files = Array() ) {
-    if ( !is_array($files) || empty($files) )
-        return false;
-	
-    $was_files = Array();
-	
-    foreach ( $files as $file ) {
-	if ( $file['no_in_theme'] == true )
-	    $dir = $file['dir'];
-	else
-	    $dir = get_template_directory_uri() . $file['dir'];
-	    
-    	wp_enqueue_style( 
-	    $file['name'] . '-css', 
-	    $dir, 
-	    $was_files,
-	    $file['version'], 
-	    $file['in_footer']
-	);
-	    
-	$was_files[] = $file['name'] . '-css';
-    }
-}
-
-function escript( $files = Array() ) {
-    if ( !is_array($files) || empty($files) )
-        return false;
-	
-    $was_files = Array();
-	
-    foreach ( $files as $file ) {
-	if ( $file['no_in_theme'] == true )
-	    $dir = $file['dir'];
-	else
-	    $dir = get_template_directory_uri() . $file['dir'];
-	    
-    	wp_enqueue_script( 
-	    $file['name'] . '-js', 
-	    $dir, 
-	    $was_files,
-	    $file['version'], 
-	    $file['in_footer']
-	);
-	    
-	$was_files[] = $file['name'] . '-js';
-    }
-}
   
-function plural_format_word($number, $after) {
+function plural_format_word($number, $after) 
+{
     $cases = array (2, 0, 1, 1, 1, 2);
     return $number.' '.$after[ ($number%100>4 && $number%100<20)? 2: $cases[min($number%10, 5)] ];
 }
-  
-function change_date_format($date, $date_format) {
-    /** 
-     * $date - use international format
-     * $date_format - use needle format. You can use it like in function date()
-    */
-  
+ 
+/** 
+ * $date - use international format
+ * $date_format - use needle format. You can use it like in function date()
+*/
+function change_date_format($date, $date_format) 
+{  
     if ( empty($date) || empty($date_format) ) return false;
 
     $_date = strtotime( $date );
+
     return date($date_format, $_date);
-  
 }
 
-function translit($s) {
+function translit($s) 
+{
     $s = (string) $s;
     $s = strip_tags($s);
     $s = str_replace(array("\n", "\r"), " ", $s);
@@ -90,7 +46,8 @@ function translit($s) {
     return $s;
 }
 
-function create_message($title, $data) {
+function create_message($title, $data) 
+{
     $time = date('d.m.Y в H:i');
 
     $message = "
@@ -112,25 +69,30 @@ function create_message($title, $data) {
 						<table width='500' cellspacing='0' cellpadding='5' border='1' bordercolor='1' style='border:solid 1px #000;border-collapse:collapse;'>
 							<caption align='center' bgcolor='#dededd' border='1' bordercolor='1' style='border:solid 1px #000;border-collapse:collapse;background:#dededd;padding:10px 0'><b>$title</b></caption>";
 
-    foreach ($data as $key => $val) {
-        if ($val != '')
+    foreach ( $data as $key => $val ) {
+        if ( $val != '' ) {
             $message .= '<tr><td bgcolor="#efeeee" style="background:#efeeee">' . $key . ':</td><td>' . $val . '</td>';
+        }
     }
 
     $message .= "<tr><td bgcolor='#efeeee' style='background:#efeeee'>Дата:</td><td>$time</td></tr><tr><td bgcolor='#efeeee' style='background:#efeeee'>IP:</td><td>$_SERVER[REMOTE_ADDR]</td></tr>";
 
-    if (file_exists(get_template_directory() . '/inc/data/SxGeo.php')) {
+    if ( file_exists(get_template_directory() . '/inc/data/SxGeo.php') ) {
+
         include get_template_directory() . '/inc/data/SxGeo.php';
 
         $SxGeoCity = new SxGeo(get_template_directory() . '/inc/data/SxGeoCity.dat');
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $region = $SxGeoCity->getCityFull($ip);
+
+        $ip         = $_SERVER['REMOTE_ADDR'];
+        $region     = $SxGeoCity->getCityFull($ip);
         $regionCity = $region["city"]["name_ru"];
 
-        if ($regionCity) {
+        if ( $regionCity ) {
             $message .= "<td bgcolor='#efeeee' style='background:#efeeee'>Город:<br /><i>(определён на основе IP)</i></td><td>$regionCity</td></tr>";
         }
     }
+    
     $message .= "</table></body></html>";
+
     return $message;
 }

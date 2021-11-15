@@ -8,8 +8,8 @@ if ( !defined('ABSPATH') ) die();
  */
 
 /*
-// Example:
-add_action('admin_menu', function() {
+add_action('admin_menu', 'admin_menu_management' );
+function admin_menu_management() {
     remove_menu_page('index.php');                // Console 
     remove_menu_page('edit.php');                 // Posts
     remove_menu_page('edit-comments.php');        // Comments 
