@@ -1,10 +1,11 @@
 <?php
-if ( !defined('ABSPATH') ) die();
+if ( !defined('ABSPATH') ) {
+    die();
+}
 
-add_action( 'wp_ajax_recall_back_form', 'recall_back_form' );
-add_action( 'wp_ajax_nopriv_recall_back_form', 'recall_back_form' ); 
-function recall_back_form() 
-{
+add_action( 'wp_ajax_'        . 'recall_back_form', 'recall_back_form' );
+add_action( 'wp_ajax_nopriv_' . 'recall_back_form', 'recall_back_form' ); 
+function recall_back_form() {
 
     if ( empty($_POST['form']) ) {
         return false;

@@ -1,5 +1,7 @@
 <?php
-if ( !defined('ABSPATH') ) die();
+if ( !defined('ABSPATH') ) {
+    die();
+}
 
 add_theme_support( 'title-tag'       );
 add_theme_support( 'post-thumbnails' );
@@ -29,4 +31,5 @@ load_theme_textdomain( 'WordPress-Starter', get_template_directory() . '/langs' 
 //     ) );
 // }
 // add_action( 'widgets_init', 'main_widgets_init' );
+
 // add_image_size( 'auteurs-preview', 361, 260, true );

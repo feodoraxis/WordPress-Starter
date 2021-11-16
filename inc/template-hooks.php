@@ -1,5 +1,7 @@
 <?php
-if ( !defined('ABSPATH') ) die();
+if ( !defined('ABSPATH') ) {
+    die();
+}
 
 /**
  * If you need use some hooks, but only not hooks for ajax-requests, do it in this file. 
@@ -8,7 +10,7 @@ if ( !defined('ABSPATH') ) die();
  */
 
 /*
-add_action('admin_menu', 'admin_menu_management' );
+add_action( 'admin_menu', 'admin_menu_management' );
 function admin_menu_management() {
     remove_menu_page('index.php');                // Console 
     remove_menu_page('edit.php');                 // Posts
@@ -20,5 +22,5 @@ function admin_menu_management() {
     remove_menu_page('users.php');                // Users 
     remove_menu_page('tools.php');                // Toolls 
     remove_menu_page('options-general.php');      // Parameters 
-});
+};
 */
