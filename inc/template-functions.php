@@ -4,19 +4,17 @@ if ( !defined('ABSPATH') ) {
 }
   
 function d( $arr ) {
-    echo '<pre>'; 
-    print_r($arr); 
-    echo"</pre>";
+    echo '<pre>' . print_r( $arr, 1 ) . "</pre>";
 }
   
 function debug( $arr ) {
-    $f = fopen($_SERVER["DOCUMENT_ROOT"]."/debug.txt", "a+");
-    fwrite($f, print_r(array($arr),true));
-    fclose($f);
+    $f = fopen( $_SERVER["DOCUMENT_ROOT"] . "/debug.txt", "a+" );
+    fwrite( $f, print_r( [$arr], true ) );
+    fclose( $f );
 }
   
 function plural_format_word( $number, $after ) {
-    $cases = array (2, 0, 1, 1, 1, 2);
+    $cases = [2, 0, 1, 1, 1, 2];
     return $number . ' ' . $after[ ($number%100 > 4 && $number%100 < 20) ? 2 : $cases[ min($number%10, 5) ] ];
 }
  
@@ -31,7 +29,7 @@ function change_date_format( $date, $date_format ) {
 
     $_date = strtotime( $date );
 
-    return date($date_format, $_date);
+    return date( $date_format, $_date );
 }
 
 function translit( $s ) {
@@ -52,7 +50,7 @@ function translit( $s ) {
 }
 
 function create_message( $title, $data ) {
-    $time = date('d.m.Y в H:i');
+    $time = date( 'd.m.Y в H:i' );
 
     $message = "
 			<!doctype html>
@@ -82,11 +80,11 @@ function create_message( $title, $data ) {
     $ip = $_SERVER['REMOTE_ADDR'];
     $message .= "<tr><td bgcolor='#efeeee' style='background:#efeeee'>Дата:</td><td>{$time}</td></tr><tr><td bgcolor='#efeeee' style='background:#efeeee'>IP:</td><td>{$ip}</td></tr>";
 
-    if ( file_exists(get_template_directory() . '/inc/data/SxGeo.php') ) {
+    if ( file_exists( get_template_directory() . '/inc/data/SxGeo.php' ) ) {
 
         include get_template_directory() . '/inc/data/SxGeo.php';
 
-        $SxGeoCity = new SxGeo(get_template_directory() . '/inc/data/SxGeoCity.dat');
+        $SxGeoCity = new SxGeo( get_template_directory() . '/inc/data/SxGeoCity.dat' );
 
         $region     = $SxGeoCity->getCityFull( $ip );
         $regionCity = $region["city"]["name_ru"];
