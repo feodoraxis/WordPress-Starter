@@ -4,10 +4,6 @@ if ( !defined('ABSPATH') ) {
 }
   
 function d( $arr, $is_hide = false ) {
-    if ( !is_array($arr) || empty($arr) ) {
-        return false;
-    }
-    
     echo '<pre' . ($is_hide === true ? ' style="display: none;"' : '') . '>'; 
     print_r( $arr );
     echo "</pre>";
