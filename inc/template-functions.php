@@ -3,8 +3,14 @@ if ( !defined('ABSPATH') ) {
     die();
 }
   
-function d( $arr ) {
-    echo '<pre>' . print_r( $arr, 1 ) . "</pre>";
+function d( $arr, $is_hide = false ) {
+    if ( !is_array($arr) || empty($arr) ) {
+        return false;
+    }
+    
+    echo '<pre' . ($is_hide === true ? ' style="display: none;"' : '') . '>'; 
+    print_r( $arr );
+    echo "</pre>";
 }
   
 function debug( $arr ) {
