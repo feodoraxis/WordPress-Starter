@@ -3,6 +3,11 @@ if ( !defined('ABSPATH') ) {
     die();
 }
 
+add_filter( 'script_loader_tag', 'add_defer_tag_script', 10, 3 );
+function add_defer_tag_script( $tag, $handle, $source ) {
+    return str_replace( "'>", "' defer>", $tag );
+}
+
 /**
  * If you need use some hooks, but only not hooks for ajax-requests, do it in this file. 
  * If need to categorized by category hooks, than do it in this file.
