@@ -5,6 +5,13 @@ if ( !defined('ABSPATH') ) {
 
 add_filter( 'script_loader_tag', 'add_defer_tag_script', 10, 3 );
 function add_defer_tag_script( $tag, $handle, $source ) {
+    
+    $path = parse_url( $_SERVER['REQUEST_URI'] );
+
+    if ( strripos( $path['path'], 'wp-admin/') ) {
+        return $tag;
+    }
+
     return str_replace( "'>", "' defer>", $tag );
 }
 
