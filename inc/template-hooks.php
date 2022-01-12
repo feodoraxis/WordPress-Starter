@@ -15,6 +15,13 @@ function add_defer_tag_script( $tag, $handle, $source ) {
     return str_replace( "'>", "' defer>", $tag );
 }
 
+add_filter( 'wp_get_attachment_image_attributes', 'fxs_add_lazyload_attr', 10, 3 );
+function fxs_add_lazyload_attr( $attr, $attachment, $size ) {
+    $attr['loading'] = 'lazy';
+
+    return $attr;
+}
+
 /**
  * If you need use some hooks, but only not hooks for ajax-requests, do it in this file. 
  * If need to categorized by category hooks, than do it in this file.
