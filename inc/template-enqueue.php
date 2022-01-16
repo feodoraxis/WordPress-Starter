@@ -3,7 +3,7 @@ if ( !defined('ABSPATH') ) {
     die();
 }
 
-add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 function enqueue_scripts() {
     wp_enqueue_style( 'main-css', get_template_directory_uri() . '/assets/css/main.min.css', Array(), '1.0', false ); 
 
